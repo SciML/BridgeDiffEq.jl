@@ -4,7 +4,7 @@ function solve{uType,tType,isinplace,AlgType<:BridgeAlgorithm}(
     alg::AlgType,
     timeseries=[],ts=[],ks=[];
     verbose=true,
-    save_start=true, dt = nothing,
+    dt = nothing,
     timeseries_errors=true,
     callback=nothing,kwargs...)
 
@@ -61,29 +61,6 @@ function solve{uType,tType,isinplace,AlgType<:BridgeAlgorithm}(
             u,_ = Bridge.solve!(Bridge.BS3(),samp,u0,f)
         end
     end
-    #=
-    if save_start
-        start_idx = 1
-        ts = prob.tspan[1]:dt:prob.tspan[end]
-    else
-        start_idx = 2
-        ts = (prob.tspan[1]+dt):dt:prob.tspan[end]
-    end
-
-    if typeof(u0) <: Union{AbstractArray}
-        _timeseries = Vector{uType}(0)
-        for i=start_idx:size(sol.q, 2)
-            push!(_timeseries, reshape(view(sol.q, :, i-1)', sizeu))
-        end
-    elseif typeof(u0) <: Union{Tuple}
-        _timeseries = Vector{typeof(u0[1])}(0)
-        for i=start_idx:size(sol.q, 2)
-            push!(_timeseries, reshape(view(sol.q, :, i-1)', sizeu))
-        end
-    else
-        _timeseries = vec(sol.q)
-    end
-    =#
 
     build_solution(prob,  alg, u.tt, u.yy,
                    W = W,
