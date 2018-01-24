@@ -22,19 +22,20 @@ function solve{uType,tType,isinplace,AlgType<:BridgeAlgorithm}(
     end
 
     u0 = prob.u0
+    p = prob.p
 
     if isinplace
-        f = (t,u) -> (du = similar(u); prob.f(t,u,du); Diagonal(du))
+        f = (t,u) -> (du = similar(u); prob.f(du,u,p,t); Diagonal(du))
         if typeof(prob) <: AbstractSDEProblem
-            g = (t,u) -> (du = similar(u); prob.g(t,u,du); Diagonal(du))
+            g = (t,u) -> (du = similar(u); prob.g(du,u,p,t,u); Diagonal(du))
         end
     else
-        f = prob.f
+        f = (t,u) -> prob.f(u,p,t)
         if typeof(prob) <: AbstractSDEProblem
             if typeof(u0) <: Number
-                g = (t,u) -> prob.g(t,u)
+                g = (t,u) -> prob.g(u,p,t)
             else
-                g = (t,u) -> Diagonal(prob.g(t,u))
+                g = (t,u) -> Diagonal(prob.g(u,p,t))
             end
         end
     end
