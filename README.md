@@ -16,8 +16,8 @@ This library adds the common interface to Bridge.jl's solvers. [See the Differen
 α=1
 β=1
 u0=1/2
-f(t,u) = α*u
-g(t,u) = β*u
+f(u,p,t) = α*u
+g(u,p,t) = β*u
 dt = 1//2^(4)
 tspan = (0.0,1.0)
 prob = SDEProblem(f,g,u0,(0.0,1.0))
