@@ -1,0 +1,12 @@
+name = "BridgeDiffEq"
+uuid = "1aa9af3a-2424-508f-bb7e-0626de155470"
+
+[deps]
+Bridge = "2d3116d5-4b8f-5680-861c-71f149790274"
+DiffEqBase = "2b5f629d-d688-5b77-993f-72d75c75574e"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+
+[compat]
+DiffEqBase = "≥ 5.0.0"
+julia = "≥ 0.6.0"
