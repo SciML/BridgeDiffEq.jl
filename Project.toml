@@ -8,6 +8,7 @@ Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
+Bridge = "0.10"
 DiffEqBase = "6"
 Reexport = "0.2"
 StaticArrays = "0.12"
