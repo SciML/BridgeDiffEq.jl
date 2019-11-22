@@ -1,8 +1,8 @@
-# DiffEqBridge.jl
+# BridgeDiffEq.jl
 
-[![Build Status](https://travis-ci.org/JuliaDiffEq/DiffEqBridge.jl.svg?branch=master)](https://travis-ci.org/JuliaDiffEq/DiffEqBridge.jl)
-[![Coverage Status](https://coveralls.io/repos/JuliaDiffEq/DiffEqBridge.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaDiffEq/DiffEqBridge.jl?branch=master)
-[![codecov.io](http://codecov.io/github/JuliaDiffEq/DiffEqBridge.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaDiffEq/DiffEqBridge.jl?branch=master)
+[![Build Status](https://travis-ci.org/JuliaDiffEq/BridgeDiffEq.jl.svg?branch=master)](https://travis-ci.org/JuliaDiffEq/BridgeDiffEq.jl)
+[![Coverage Status](https://coveralls.io/repos/JuliaDiffEq/BridgeDiffEq.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaDiffEq/BridgeDiffEq.jl?branch=master)
+[![codecov.io](http://codecov.io/github/JuliaDiffEq/BridgeDiffEq.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaDiffEq/BridgeDiffEq.jl?branch=master)
 
 This package contains bindings for Bridge.jl to allow it to be used with the
 JuliaDiffEq common interface. For more information on using the solvers from this
