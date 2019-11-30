@@ -1,5 +1,5 @@
 using BridgeDiffEq, StaticArrays
-using Base.Test
+using Test
 
 α=1
 β=1
@@ -17,7 +17,6 @@ prob = SDEProblem(f,g,u0,(0.0,1.0))
 @time sol = solve(prob,BridgeEuler(),dt=dt)
 sol = solve(prob,BridgeHeun(),dt=dt)
 sol = solve(prob,BridgeSRK(),dt=dt)
-
 
 
 u0 = @SVector [2.0,3.0]

@@ -1,11 +1,9 @@
-__precompile__(true)
-
 module BridgeDiffEq
 
 using Reexport
 @reexport using DiffEqBase
 
-using StaticArrays
+using StaticArrays, LinearAlgebra
 import Bridge
 
 import DiffEqBase: solve
@@ -19,12 +17,13 @@ const warnkeywords =
      :calck, :progress, :tstops, :saveat, :dense)
 
 function __init__()
-    const global warnlist = Set(warnkeywords)
+    global warnlist = Set(warnkeywords)
 end
 
 include("algorithms.jl")
 include("solve.jl")
 
-export BridgeAlgorithm, BridgeEuler, BridgeHeun, BridgeSRK, BridgeR3, BridgeBS3
+export BridgeAlgorithm, BridgeEuler, BridgeHeun, BridgeSRK, BridgeR3, BridgeBS3,
+       BridgeMdb
 
 end # module
