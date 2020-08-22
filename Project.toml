@@ -1,6 +1,6 @@
 name = "BridgeDiffEq"
 uuid = "1aa9af3a-2424-508f-bb7e-0626de155470"
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Bridge = "2d3116d5-4b8f-5680-861c-71f149790274"
