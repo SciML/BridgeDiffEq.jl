@@ -1,6 +1,6 @@
 # BridgeDiffEq.jl
 
-[![Build Status](https://travis-ci.org/JuliaDiffEq/BridgeDiffEq.jl.svg?branch=master)](https://travis-ci.org/JuliaDiffEq/BridgeDiffEq.jl)
+[![Build Status](https://github.com/SciML/BridgeDiffEq.jl/workflows/CI/badge.svg)](https://github.com/SciML/BridgeDiffEq.jl/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/JuliaDiffEq/BridgeDiffEq.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaDiffEq/BridgeDiffEq.jl?branch=master)
 [![codecov.io](http://codecov.io/github/JuliaDiffEq/BridgeDiffEq.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaDiffEq/BridgeDiffEq.jl?branch=master)
 
