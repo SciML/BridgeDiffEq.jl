@@ -25,13 +25,13 @@ function solve(prob::Union{DiffEqBase.AbstractODEProblem{uType, tType, isinplace
 
     if isinplace
         f = (t, u) -> (du = similar(u); prob.f(du, u, p, t); Diagonal(du))
-        if typeof(prob) <: DiffEqBase.AbstractSDEProblem
+        if prob isa DiffEqBase.AbstractSDEProblem
             g = (t, u) -> (du = similar(u); prob.g(du, u, p, t, u); Diagonal(du))
         end
     else
         f = (t, u) -> prob.f(u, p, t)
-        if typeof(prob) <: DiffEqBase.AbstractSDEProblem
-            if typeof(u0) <: Number
+        if prob isa DiffEqBase.AbstractSDEProblem
+            if u0 isa Number
                 g = (t, u) -> prob.g(u, p, t)
             else
                 g = (t, u) -> Diagonal(prob.g(u, p, t))
@@ -40,14 +40,14 @@ function solve(prob::Union{DiffEqBase.AbstractODEProblem{uType, tType, isinplace
     end
 
     t = prob.tspan[1]:dt:prob.tspan[2]
-    if typeof(prob) <: DiffEqBase.AbstractSDEProblem
+    if prob isa DiffEqBase.AbstractSDEProblem
         W = Bridge.samplepath(t, zero(u0))
         samp = Bridge.sample(t, Bridge.Wiener{typeof(u0)}())
-        if typeof(alg) <: BridgeEuler
+        if alg isa BridgeEuler
             u = Bridge.solve!(Bridge.Euler(), W, u0, samp, (f, g))
-        elseif typeof(alg) <: BridgeHeun
+        elseif alg isa BridgeHeun
             u = Bridge.solve!(Bridge.StochasticHeun(), W, u0, samp, (f, g))
-        elseif typeof(alg) <: BridgeSRK && typeof(u0) <: Number
+        elseif alg isa BridgeSRK && u0 isa Number
             u = Bridge.solve!(Bridge.StochasticRungeKutta(), W, u0, samp, (f, g))
         else
             error("BridgeSRK is not compatible with non Number types")
@@ -55,9 +55,9 @@ function solve(prob::Union{DiffEqBase.AbstractODEProblem{uType, tType, isinplace
     else # ODE
         samp = Bridge.SamplePath(t, Vector{typeof(u0)}(undef, length(t)))
         W = nothing
-        if typeof(alg) <: BridgeR3
+        if alg isa BridgeR3
             u = Bridge.solve!(Bridge.R3(), samp, u0, f)
-        elseif typeof(alg) <: BridgeBS3
+        elseif alg isa BridgeBS3
             u, _ = Bridge.solve!(Bridge.BS3(), samp, u0, f)
         end
     end
