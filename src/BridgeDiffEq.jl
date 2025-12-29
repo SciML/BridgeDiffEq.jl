@@ -25,4 +25,6 @@ include("solve.jl")
 export BridgeAlgorithm, BridgeEuler, BridgeHeun, BridgeSRK, BridgeR3, BridgeBS3,
        BridgeMdb
 
+include("precompilation.jl")
+
 end # module
