@@ -2,13 +2,13 @@ function solve(
         prob::Union{DiffEqBase.AbstractODEProblem{uType, tType, isinplace},
             DiffEqBase.AbstractSDEProblem{uType, tType, isinplace}},
         alg::AlgType,
-        timeseries = [], ts = [], ks = [];
+        timeseries = nothing, ts = nothing, ks = nothing;
         verbose = true,
         dt = nothing,
         timeseries_errors = true,
         callback = nothing,
         kwargs...) where {uType, tType, isinplace, AlgType <: BridgeAlgorithm}
-    if dt == nothing
+    if isnothing(dt)
         error("dt required for fixed timestep methods.")
     end
 
@@ -17,7 +17,7 @@ function solve(
         warned && warn_compat()
     end
 
-    if callback != nothing || :callback in keys(prob.kwargs)
+    if !isnothing(callback) || :callback in keys(prob.kwargs)
         error("Bridge is not compatible with callbacks.")
     end
 
@@ -66,5 +66,5 @@ function solve(
     DiffEqBase.build_solution(prob, alg, u.tt, u.yy,
         W = W,
         timeseries_errors = timeseries_errors,
-        retcode = :Success)
+        retcode = DiffEqBase.ReturnCode.Success)
 end
