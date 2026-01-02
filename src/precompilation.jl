@@ -1,4 +1,5 @@
 using PrecompileTools
+using DiffEqBase: ODEProblem, SDEProblem
 
 @setup_workload begin
     f(u, p, t) = u
