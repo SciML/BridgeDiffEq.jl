@@ -3,7 +3,8 @@ module BridgeDiffEq
 using Reexport
 @reexport using DiffEqBase
 
-using StaticArrays, LinearAlgebra
+using StaticArrays
+using LinearAlgebra: Diagonal
 import Bridge
 
 import DiffEqBase: solve
