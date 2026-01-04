@@ -1,13 +1,16 @@
 function solve(
-        prob::Union{DiffEqBase.AbstractODEProblem{uType, tType, isinplace},
-            DiffEqBase.AbstractSDEProblem{uType, tType, isinplace}},
+        prob::Union{
+            DiffEqBase.AbstractODEProblem{uType, tType, isinplace},
+            DiffEqBase.AbstractSDEProblem{uType, tType, isinplace},
+        },
         alg::AlgType,
         timeseries = nothing, ts = nothing, ks = nothing;
         verbose = true,
         dt = nothing,
         timeseries_errors = true,
         callback = nothing,
-        kwargs...) where {uType, tType, isinplace, AlgType <: BridgeAlgorithm}
+        kwargs...
+    ) where {uType, tType, isinplace, AlgType <: BridgeAlgorithm}
     if isnothing(dt)
         error("dt required for fixed timestep methods.")
     end
@@ -63,8 +66,10 @@ function solve(
         end
     end
 
-    DiffEqBase.build_solution(prob, alg, u.tt, u.yy,
+    return DiffEqBase.build_solution(
+        prob, alg, u.tt, u.yy,
         W = W,
         timeseries_errors = timeseries_errors,
-        retcode = DiffEqBase.ReturnCode.Success)
+        retcode = DiffEqBase.ReturnCode.Success
+    )
 end
