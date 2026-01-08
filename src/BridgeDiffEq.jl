@@ -1,9 +1,10 @@
 module BridgeDiffEq
 
-using Reexport
+using Reexport: Reexport, @reexport
 @reexport using DiffEqBase
 
-using StaticArrays
+using DiffEqBase: DiffEqBase, check_keywords, isinplace, warn_compat
+using StaticArrays: StaticArrays
 using LinearAlgebra: Diagonal
 import Bridge
 
